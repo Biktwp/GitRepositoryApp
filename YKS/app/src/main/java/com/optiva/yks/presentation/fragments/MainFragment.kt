@@ -1,5 +1,6 @@
 package com.optiva.yks.presentation.fragments
 
+import android.content.Context
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -16,19 +17,14 @@ import androidx.recyclerview.widget.RecyclerView
 import com.optiva.yks.presentation.adapter.RepositoryListAdapter
 import com.optiva.yks.R
 import com.optiva.yks.databinding.MainFragmentBinding
+import com.optiva.yks.presentation.adapter.onRepositoryListener
+import com.optiva.yks.presentation.common.OnRepositoryClickListener
 import com.optiva.yks.presentation.viewmodel.MainViewModel
+import kotlinx.android.synthetic.*
 import kotlinx.android.synthetic.main.main_fragment.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class MainFragment : Fragment(), RepositoryListAdapter.onRepositoryListener {
-    override fun onNoteClick(position: Int) {
-
-            .beginTransaction()
-            .replace(
-                R.id.container,
-                MainFragment.newInstance()
-            ).commit()
-    }
+class MainFragment : Fragment(), onRepositoryListener {
 
     companion object {
         fun newInstance() = MainFragment()
@@ -36,6 +32,14 @@ class MainFragment : Fragment(), RepositoryListAdapter.onRepositoryListener {
 
     private val viewModel: MainViewModel by viewModel()
     lateinit var binding: MainFragmentBinding
+    lateinit var listener: OnRepositoryClickListener
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        listener = activity as OnRepositoryClickListener
+    }
+
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -50,7 +54,7 @@ class MainFragment : Fragment(), RepositoryListAdapter.onRepositoryListener {
         binding.recyclerviewReposlist.adapter = RepositoryListAdapter()
         binding.recyclerviewReposlist.layoutManager = LinearLayoutManager(activity)
 
-        binding.searchEdittext.addTextChangedListener(object : TextWatcher{
+        binding.searchEdittext.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
 
             }
@@ -69,6 +73,9 @@ class MainFragment : Fragment(), RepositoryListAdapter.onRepositoryListener {
         return view
     }
 
+    override fun onNoteClick(position: Int) {
+        listener.OnRepositoryClick(binding.viewModel.repoList.value!![position])
+    }
 
 
 }

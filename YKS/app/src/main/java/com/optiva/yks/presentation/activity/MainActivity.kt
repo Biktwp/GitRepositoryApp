@@ -3,12 +3,14 @@ package com.optiva.yks.presentation.activity
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.optiva.yks.R
+import com.optiva.yks.presentation.common.OnRepositoryClickListener
 import com.optiva.yks.presentation.fragments.MainFragment
+import com.optiva.yks.presentation.model.RepositoryList
 import com.optiva.yks.utils.di.applicationModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), OnRepositoryClickListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,6 +34,11 @@ class MainActivity : AppCompatActivity() {
                 R.id.container,
                 MainFragment.newInstance()
             ).commit()
+    }
+
+
+    override fun OnRepositoryClick(repositoryListener: RepositoryList) {
+
     }
 
 }

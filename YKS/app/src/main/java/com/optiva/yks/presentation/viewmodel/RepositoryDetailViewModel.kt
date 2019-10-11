@@ -2,9 +2,10 @@ package com.optiva.yks.presentation.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import com.optiva.yks.presentation.model.RepositoryList
 
-class RepositoryDetailViewModel {
+class RepositoryDetailViewModel : ViewModel(){
 
     private val _repository: MutableLiveData<RepositoryList> by lazy { MutableLiveData<RepositoryList>() }
     val repository: LiveData<RepositoryList>

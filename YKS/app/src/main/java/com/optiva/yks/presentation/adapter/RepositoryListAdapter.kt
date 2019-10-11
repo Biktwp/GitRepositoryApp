@@ -7,9 +7,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.optiva.yks.presentation.model.RepositoryList
 import com.optiva.yks.databinding.RepositoryItemBinding
 
-class RepositoryListAdapter : RecyclerView.Adapter<RepositoryListAdapter.ViewHolder>(){
+class RepositoryListAdapter(private val onRepositoryListener: onRepositoryListener) : RecyclerView.Adapter<RepositoryListAdapter.ViewHolder>(){
 
     private val items : MutableList<RepositoryList> = mutableListOf()
+
 
     override fun getItemCount(): Int {
         return items.size
@@ -24,7 +25,7 @@ class RepositoryListAdapter : RecyclerView.Adapter<RepositoryListAdapter.ViewHol
         viewType: Int
     ):ViewHolder {
         val binding = RepositoryItemBinding.inflate(LayoutInflater.from(parent.context),parent,false)
-        return ViewHolder(binding,parent)
+        return ViewHolder(binding,parent,onRepositoryListener)
     }
 
     fun addItems(dataset: List<RepositoryList>){
@@ -34,8 +35,9 @@ class RepositoryListAdapter : RecyclerView.Adapter<RepositoryListAdapter.ViewHol
     }
 
 
-    class ViewHolder(private val binding: RepositoryItemBinding,private val v:View): RecyclerView.ViewHolder(binding.root), View.OnClickListener{
+    class ViewHolder(private val binding: RepositoryItemBinding,private val v:View, private val onRepositoryListener: onRepositoryListener): RecyclerView.ViewHolder(binding.root), View.OnClickListener{
         override fun onClick(v: View?) {
+            onRepositoryListener.onNoteClick(adapterPosition)
         }
 
         fun bind(repositoryList: RepositoryList){
@@ -45,9 +47,10 @@ class RepositoryListAdapter : RecyclerView.Adapter<RepositoryListAdapter.ViewHol
         }
     }
 
-    interface onRepositoryListener{
-        fun onNoteClick(position: Int)
-    }
 
 
+}
+
+interface onRepositoryListener{
+    fun onNoteClick(position: Int)
 }
