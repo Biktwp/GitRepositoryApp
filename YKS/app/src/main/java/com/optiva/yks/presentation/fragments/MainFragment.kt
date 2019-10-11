@@ -51,7 +51,7 @@ class MainFragment : Fragment(), onRepositoryListener {
             lifecycleOwner = viewLifecycleOwner
         }
 
-        binding.recyclerviewReposlist.adapter = RepositoryListAdapter()
+        binding.recyclerviewReposlist.adapter = RepositoryListAdapter(this)
         binding.recyclerviewReposlist.layoutManager = LinearLayoutManager(activity)
 
         binding.searchEdittext.addTextChangedListener(object : TextWatcher {

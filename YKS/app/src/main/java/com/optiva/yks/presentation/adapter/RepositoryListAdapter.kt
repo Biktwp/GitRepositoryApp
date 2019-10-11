@@ -10,7 +10,7 @@ import com.optiva.yks.databinding.RepositoryItemBinding
 class RepositoryListAdapter(private val onRepositoryListener: onRepositoryListener) : RecyclerView.Adapter<RepositoryListAdapter.ViewHolder>(){
 
     private val items : MutableList<RepositoryList> = mutableListOf()
-
+    private val repositoryListener = onRepositoryListener
 
     override fun getItemCount(): Int {
         return items.size
@@ -25,7 +25,7 @@ class RepositoryListAdapter(private val onRepositoryListener: onRepositoryListen
         viewType: Int
     ):ViewHolder {
         val binding = RepositoryItemBinding.inflate(LayoutInflater.from(parent.context),parent,false)
-        return ViewHolder(binding,parent,onRepositoryListener)
+        return ViewHolder(binding,parent,repositoryListener)
     }
 
     fun addItems(dataset: List<RepositoryList>){

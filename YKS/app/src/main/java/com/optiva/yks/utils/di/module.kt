@@ -21,7 +21,6 @@ val applicationModule = module {
 
     single { GetAllRepositories(get()) }
 
-    single { RepositoryListAdapter(get())}
 
     viewModel { MainViewModel(get()) }
     viewModel { RepositoryDetailViewModel() }
