@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="repository"
+            type="com.optiva.yks.presentation.model.RepositoryList" />
+
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_margin="10dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_repitem"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/item_repository_image"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:src="@{repository.url}"
+                android:layout_margin="10dp"
+                />
+
+            <TextView
+                android:id="@+id/item_repository_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{repository.rep_name}"
+                android:textSize="20sp"
+                android:layout_margin="3dp"
+                app:layout_constraintStart_toEndOf="@+id/item_repository_image"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/item_repository_description"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="@{repository.description}"
+                android:textSize="15sp"
+                android:layout_margin="3dp"
+                app:layout_constraintStart_toEndOf="@+id/item_repository_image"
+                app:layout_constraintTop_toBottomOf="@+id/item_repository_name" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+</layout>
