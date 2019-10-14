@@ -1,14 +1,14 @@
 package com.optiva.yks.domain.usecase
 
 import com.optiva.yks.data.Repository
-import com.optiva.yks.domain.model.GHRepositoryDomain
+import com.optiva.yks.domain.model.RepositoryBO
 import com.optiva.yks.utils.UseCase
 import com.optiva.yks.utils.Result
 
 class GetAllRepositories (private val repository: Repository) :
-    UseCase<List<GHRepositoryDomain>, GetAllRepositories.Params>() {
+    UseCase<List<RepositoryBO>, GetAllRepositories.Params>() {
 
-    override suspend fun run(params: Params): Result<List<GHRepositoryDomain>> {
+    override suspend fun run(params: Params): Result<List<RepositoryBO>> {
         val result = repository.getRepositoryList()
 
         if (result is Result.Response && params.filter != "") {

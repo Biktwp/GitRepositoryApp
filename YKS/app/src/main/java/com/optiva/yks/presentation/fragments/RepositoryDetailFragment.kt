@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.optiva.yks.R
 import com.optiva.yks.databinding.RepositoryDetailsBinding
-import com.optiva.yks.presentation.model.RepositoryList
+import com.optiva.yks.presentation.model.RepositoryVO
 import com.optiva.yks.presentation.viewmodel.RepositoryDetailViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -17,11 +17,11 @@ class RepositoryDetailFragment : Fragment(){
 
         private const val REPOSITORY_ARG = "REPOSITORY_ARG"
 
-        fun newInstance(repositoryList: RepositoryList): Fragment {
+        fun newInstance(repositoryVO: RepositoryVO): Fragment {
             val fragment = RepositoryDetailFragment()
 
             val args = Bundle()
-            args.putSerializable(REPOSITORY_ARG, repositoryList)
+            args.putSerializable(REPOSITORY_ARG, repositoryVO)
 
             fragment.arguments = args
 
@@ -44,7 +44,7 @@ class RepositoryDetailFragment : Fragment(){
         }
 
         arguments?.getSerializable(REPOSITORY_ARG).also {
-            viewModel.loadRepository(it as RepositoryList)
+            viewModel.loadRepository(it as RepositoryVO)
         }
 
 

@@ -2,7 +2,7 @@ package com.optiva.yks.data.remote.dto
 import com.google.gson.annotations.SerializedName
 import com.optiva.yks.data.remote.dto.Owner
 
-class GitHubRepository (
+data class RepositoryDTO (
 
 	@SerializedName("id") val id : Int,
 	@SerializedName("node_id") val node_id : String,

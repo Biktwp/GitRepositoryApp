@@ -3,12 +3,12 @@ package com.optiva.yks.presentation.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.optiva.yks.presentation.model.RepositoryList
+import com.optiva.yks.presentation.model.RepositoryVO
 
 class RepositoryDetailViewModel : ViewModel(){
 
-    private val _repository: MutableLiveData<RepositoryList> by lazy { MutableLiveData<RepositoryList>() }
-    val repository: LiveData<RepositoryList>
+    private val _repository: MutableLiveData<RepositoryVO> by lazy { MutableLiveData<RepositoryVO>() }
+    val repository: LiveData<RepositoryVO>
         get() = _repository
 
     var rep_name: String = ""
@@ -18,7 +18,7 @@ class RepositoryDetailViewModel : ViewModel(){
 
 
 
-    fun loadRepository(repository : RepositoryList){
+    fun loadRepository(repository : RepositoryVO){
         _repository.value = repository
         rep_name =repository.rep_name!!.substring(0, repository.rep_name!!.indexOf('/'))
 

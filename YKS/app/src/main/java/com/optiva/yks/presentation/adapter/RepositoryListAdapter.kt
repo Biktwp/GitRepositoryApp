@@ -3,14 +3,14 @@ package com.optiva.yks.presentation.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.optiva.yks.presentation.model.RepositoryList
+import com.optiva.yks.presentation.model.RepositoryVO
 import com.optiva.yks.databinding.RepositoryItemBinding
 import com.optiva.yks.presentation.common.onRepositoryListener
 
 class RepositoryListAdapter(private val onRepositoryListener: onRepositoryListener) :
     RecyclerView.Adapter<RepositoryListAdapter.ViewHolder>() {
 
-    private val items: MutableList<RepositoryList> = mutableListOf()
+    private val items: MutableList<RepositoryVO> = mutableListOf()
     private val repositoryListener = onRepositoryListener
 
     override fun getItemCount(): Int {
@@ -32,7 +32,7 @@ class RepositoryListAdapter(private val onRepositoryListener: onRepositoryListen
         )
     }
 
-    fun addItems(dataset: List<RepositoryList>) {
+    fun addItems(dataset: List<RepositoryVO>) {
         items.clear()
         items.addAll(dataset)
         notifyDataSetChanged()
@@ -45,10 +45,10 @@ class RepositoryListAdapter(private val onRepositoryListener: onRepositoryListen
     ) : RecyclerView.ViewHolder(binding.root) {
 
 
-        fun bind(repositoryList: RepositoryList) {
-            binding.repository = repositoryList
+        fun bind(repositoryVO: RepositoryVO) {
+            binding.repository = repositoryVO
             binding.root.setOnClickListener{
-                onRepositoryListener.onNoteClick(repositoryList)
+                onRepositoryListener.onNoteClick(repositoryVO)
             }
             binding.executePendingBindings()
         }

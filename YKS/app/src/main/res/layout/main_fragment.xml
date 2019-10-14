@@ -36,7 +36,7 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerview_reposlist"
-            items="@{viewModel.repoList}"
+            items="@{viewModel.repoVO}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"

@@ -6,11 +6,9 @@ import com.optiva.yks.R
 import com.optiva.yks.presentation.common.OnRepositoryClickListener
 import com.optiva.yks.presentation.fragments.MainFragment
 import com.optiva.yks.presentation.fragments.RepositoryDetailFragment
-import com.optiva.yks.presentation.model.RepositoryList
-import com.optiva.yks.presentation.viewmodel.RepositoryDetailViewModel
+import com.optiva.yks.presentation.model.RepositoryVO
 import com.optiva.yks.utils.di.applicationModule
 import org.koin.android.ext.koin.androidContext
-import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.context.startKoin
 
 class MainActivity : AppCompatActivity(), OnRepositoryClickListener {
@@ -41,7 +39,7 @@ class MainActivity : AppCompatActivity(), OnRepositoryClickListener {
     }
 
 
-    override fun OnRepositoryClick(repositoryListener: RepositoryList) {
+    override fun OnRepositoryClick(repositoryListener: RepositoryVO) {
         //repositoryDetailViewModel.loadRepository(repositoryListener)
         supportFragmentManager.beginTransaction()
             .replace(R.id.container, RepositoryDetailFragment.newInstance(repositoryListener))
