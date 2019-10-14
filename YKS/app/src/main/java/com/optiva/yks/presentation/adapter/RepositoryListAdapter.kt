@@ -6,10 +6,12 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.optiva.yks.presentation.model.RepositoryList
 import com.optiva.yks.databinding.RepositoryItemBinding
+import com.optiva.yks.presentation.common.onRepositoryListener
 
-class RepositoryListAdapter(private val onRepositoryListener: onRepositoryListener) : RecyclerView.Adapter<RepositoryListAdapter.ViewHolder>(){
+class RepositoryListAdapter(private val onRepositoryListener: onRepositoryListener) :
+    RecyclerView.Adapter<RepositoryListAdapter.ViewHolder>() {
 
-    private val items : MutableList<RepositoryList> = mutableListOf()
+    private val items: MutableList<RepositoryList> = mutableListOf()
     private val repositoryListener = onRepositoryListener
 
     override fun getItemCount(): Int {
@@ -23,34 +25,37 @@ class RepositoryListAdapter(private val onRepositoryListener: onRepositoryListen
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ):ViewHolder {
-        val binding = RepositoryItemBinding.inflate(LayoutInflater.from(parent.context),parent,false)
-        return ViewHolder(binding,parent,repositoryListener)
+    ): ViewHolder {
+        val binding =
+            RepositoryItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return ViewHolder(
+            binding, repositoryListener
+        )
     }
 
-    fun addItems(dataset: List<RepositoryList>){
+    fun addItems(dataset: List<RepositoryList>) {
         items.clear()
         items.addAll(dataset)
         notifyDataSetChanged()
     }
 
 
-    class ViewHolder(private val binding: RepositoryItemBinding,private val v:View, private val onRepositoryListener: onRepositoryListener): RecyclerView.ViewHolder(binding.root), View.OnClickListener{
+    class ViewHolder(
+        private val binding: RepositoryItemBinding,
+        private val onRepositoryListener: onRepositoryListener
+    ) : RecyclerView.ViewHolder(binding.root), View.OnClickListener {
+
         override fun onClick(v: View?) {
             onRepositoryListener.onNoteClick(adapterPosition)
         }
 
-        fun bind(repositoryList: RepositoryList){
+        fun bind(repositoryList: RepositoryList) {
             binding.repository = repositoryList
+            binding.root.setOnClickListener(this)
             binding.executePendingBindings()
-            v.setOnClickListener(this)
         }
     }
 
 
-
 }
 
-interface onRepositoryListener{
-    fun onNoteClick(position: Int)
-}

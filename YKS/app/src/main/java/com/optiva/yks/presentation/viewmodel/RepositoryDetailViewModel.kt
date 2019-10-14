@@ -11,17 +11,20 @@ class RepositoryDetailViewModel : ViewModel(){
     val repository: LiveData<RepositoryList>
         get() = _repository
 
-    val rep_name: String =
-        _repository.value!!.rep_name!!.substring(0, _repository.value!!.rep_name!!.indexOf('/'))
+    var rep_name: String = ""
 
-    val user_name: String = _repository.value!!.rep_name!!.substring(
-        repository.value!!.rep_name!!.indexOf('/'),
-        repository.value!!.rep_name!!.length - 1
-    )
+
+    var user_name: String = ""
+
 
 
     fun loadRepository(repository : RepositoryList){
         _repository.value = repository
+        rep_name =repository.rep_name!!.substring(0, repository.rep_name!!.indexOf('/'))
+
+        user_name = repository.rep_name!!.substring(
+            repository.rep_name!!.indexOf('/'),
+            repository.rep_name!!.length - 1)
     }
 
 }

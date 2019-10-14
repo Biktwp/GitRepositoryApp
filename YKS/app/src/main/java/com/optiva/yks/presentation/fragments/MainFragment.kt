@@ -5,23 +5,16 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.LayoutInflater
-import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentTransaction
-import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.optiva.yks.presentation.adapter.RepositoryListAdapter
 import com.optiva.yks.R
 import com.optiva.yks.databinding.MainFragmentBinding
-import com.optiva.yks.presentation.adapter.onRepositoryListener
 import com.optiva.yks.presentation.common.OnRepositoryClickListener
+import com.optiva.yks.presentation.common.onRepositoryListener
 import com.optiva.yks.presentation.viewmodel.MainViewModel
-import kotlinx.android.synthetic.*
-import kotlinx.android.synthetic.main.main_fragment.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainFragment : Fragment(), onRepositoryListener {
@@ -74,7 +67,7 @@ class MainFragment : Fragment(), onRepositoryListener {
     }
 
     override fun onNoteClick(position: Int) {
-        listener.OnRepositoryClick(binding.viewModel.repoList.value!![position])
+        listener.OnRepositoryClick(binding.viewModel!!.repoList.value!![position])
     }
 
 

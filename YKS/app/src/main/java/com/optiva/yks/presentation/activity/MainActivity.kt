@@ -5,21 +5,26 @@ import androidx.appcompat.app.AppCompatActivity
 import com.optiva.yks.R
 import com.optiva.yks.presentation.common.OnRepositoryClickListener
 import com.optiva.yks.presentation.fragments.MainFragment
+import com.optiva.yks.presentation.fragments.RepositoryDetailFragment
 import com.optiva.yks.presentation.model.RepositoryList
+import com.optiva.yks.presentation.viewmodel.RepositoryDetailViewModel
 import com.optiva.yks.utils.di.applicationModule
 import org.koin.android.ext.koin.androidContext
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.context.startKoin
 
 class MainActivity : AppCompatActivity(), OnRepositoryClickListener {
 
+    private val repositoryDetailViewModel: RepositoryDetailViewModel by viewModel()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_activity)
-        if (savedInstanceState == null) {
-            supportFragmentManager.beginTransaction()
-                .replace(R.id.container, MainFragment.newInstance())
-                .commitNow()
-        }
+//        if (savedInstanceState == null) {
+//            supportFragmentManager.beginTransaction()
+//                .replace(R.id.container, MainFragment.newInstance())
+//                .commitNow()
+//        }
         startKoin {
             androidContext(this@MainActivity)
             modules(applicationModule)
@@ -38,7 +43,9 @@ class MainActivity : AppCompatActivity(), OnRepositoryClickListener {
 
 
     override fun OnRepositoryClick(repositoryListener: RepositoryList) {
-
+        repositoryDetailViewModel.loadRepository(repositoryListener)
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.container, RepositoryDetailFragment.newInstance()).commit()
     }
 
 }

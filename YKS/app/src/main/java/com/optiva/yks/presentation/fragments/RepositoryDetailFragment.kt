@@ -13,10 +13,10 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class RepositoryDetailFragment : Fragment(){
 
     companion object {
-        fun newInstance() = RepositoryDetailFragment
+        fun newInstance() = RepositoryDetailFragment()
     }
 
-    private val viewModel: RepositoryDetailViewModel by viewModel()
+    private val viewModel: RepositoryDetailViewModel = RepositoryDetailViewModel()
 
     lateinit var binding: RepositoryDetailsBinding
     override fun onCreateView(
