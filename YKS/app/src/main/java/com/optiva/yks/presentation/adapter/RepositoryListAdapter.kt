@@ -1,7 +1,6 @@
 package com.optiva.yks.presentation.adapter
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.optiva.yks.presentation.model.RepositoryList
@@ -43,15 +42,14 @@ class RepositoryListAdapter(private val onRepositoryListener: onRepositoryListen
     class ViewHolder(
         private val binding: RepositoryItemBinding,
         private val onRepositoryListener: onRepositoryListener
-    ) : RecyclerView.ViewHolder(binding.root), View.OnClickListener {
+    ) : RecyclerView.ViewHolder(binding.root) {
 
-        override fun onClick(v: View?) {
-            onRepositoryListener.onNoteClick(adapterPosition)
-        }
 
         fun bind(repositoryList: RepositoryList) {
             binding.repository = repositoryList
-            binding.root.setOnClickListener(this)
+            binding.root.setOnClickListener{
+                onRepositoryListener.onNoteClick(repositoryList)
+            }
             binding.executePendingBindings()
         }
     }

@@ -8,5 +8,5 @@ interface OnRepositoryClickListener{
 
 
 interface onRepositoryListener {
-    fun onNoteClick(position: Int)
+    fun onNoteClick(position: RepositoryList)
 }

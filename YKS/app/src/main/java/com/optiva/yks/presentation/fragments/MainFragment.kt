@@ -14,6 +14,7 @@ import com.optiva.yks.R
 import com.optiva.yks.databinding.MainFragmentBinding
 import com.optiva.yks.presentation.common.OnRepositoryClickListener
 import com.optiva.yks.presentation.common.onRepositoryListener
+import com.optiva.yks.presentation.model.RepositoryList
 import com.optiva.yks.presentation.viewmodel.MainViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -66,8 +67,8 @@ class MainFragment : Fragment(), onRepositoryListener {
         return view
     }
 
-    override fun onNoteClick(position: Int) {
-        listener.OnRepositoryClick(binding.viewModel!!.repoList.value!![position])
+    override fun onNoteClick(position: RepositoryList) {
+        listener.OnRepositoryClick(position)
     }
 
 

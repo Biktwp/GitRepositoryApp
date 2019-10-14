@@ -5,7 +5,7 @@
     <data>
 
         <variable
-            name="repository"
+            name="viewModel"
             type="com.optiva.yks.presentation.viewmodel.RepositoryDetailViewModel" />
 
     </data>
@@ -20,7 +20,7 @@
             android:id="@+id/repo_detail_image"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@{repository.repository.url}"
+            android:src="@{viewModel.repository.url}"
             app:layout_constraintBottom_toTopOf="@id/guideline"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -29,7 +29,7 @@
             android:id="@+id/repo_detail_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{repository.rep_name}"
+            android:text="@{viewModel.rep_name}"
             android:textSize="25sp"
             app:layout_constraintBottom_toTopOf="@id/repo_detail_username"
             app:layout_constraintStart_toEndOf="@+id/repo_detail_image"
@@ -39,7 +39,7 @@
             android:id="@+id/repo_detail_username"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{repository.user_name}"
+            android:text="@{viewModel.user_name}"
             android:textSize="20sp"
             app:layout_constraintBottom_toTopOf="@id/guideline"
             app:layout_constraintStart_toEndOf="@id/repo_detail_image" />
@@ -54,7 +54,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="23jnfjlwenfwejhnflwkejfwefwefwefwefwf"
+            android:text="@{viewModel.repository.description}"
             android:textSize="15sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/guideline" />

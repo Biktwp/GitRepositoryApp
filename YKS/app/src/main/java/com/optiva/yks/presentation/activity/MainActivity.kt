@@ -15,7 +15,6 @@ import org.koin.core.context.startKoin
 
 class MainActivity : AppCompatActivity(), OnRepositoryClickListener {
 
-    private val repositoryDetailViewModel: RepositoryDetailViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,9 +42,16 @@ class MainActivity : AppCompatActivity(), OnRepositoryClickListener {
 
 
     override fun OnRepositoryClick(repositoryListener: RepositoryList) {
-        repositoryDetailViewModel.loadRepository(repositoryListener)
+        //repositoryDetailViewModel.loadRepository(repositoryListener)
         supportFragmentManager.beginTransaction()
-            .replace(R.id.container, RepositoryDetailFragment.newInstance()).commit()
+            .replace(R.id.container, RepositoryDetailFragment.newInstance(repositoryListener))
+            .addToBackStack(null).commit()
     }
+
+//    override fun onBackPressed() {
+//        loadMainFragment()
+////        super.onBackPressed()
+////        loadMainFragment()
+//    }
 
 }
