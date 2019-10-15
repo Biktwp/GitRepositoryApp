@@ -29,7 +29,7 @@
             android:id="@+id/repo_detail_name"
             android:layout_width="125dp"
             android:layout_height="125dp"
-            android:text="@{viewModel.rep_name}"
+            app:rep_name="@{viewModel.repository.rep_name}"
             android:layout_marginTop="30dp"
             android:layout_marginStart="15dp"
             android:textSize="25sp"
@@ -41,7 +41,7 @@
             android:id="@+id/repo_detail_username"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{viewModel.user_name}"
+            app:user_name="@{viewModel.repository.rep_name}"
             android:textSize="20sp"
             app:layout_constraintBottom_toTopOf="@id/guideline"
             app:layout_constraintStart_toEndOf="@id/repo_detail_image" />
