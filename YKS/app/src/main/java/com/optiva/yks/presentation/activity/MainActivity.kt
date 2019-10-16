@@ -22,10 +22,10 @@ class MainActivity : AppCompatActivity(), OnRepositoryClickListener {
 //                .replace(R.id.container, MainFragment.newInstance())
 //                .commitNow()
 //        }
-        startKoin {
-            androidContext(this@MainActivity)
-            modules(applicationModule)
-        }
+//        startKoin {
+//            androidContext(this@MainActivity)
+//            modules(applicationModule)
+//        }
         loadMainFragment()
     }
 

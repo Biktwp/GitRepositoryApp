@@ -37,7 +37,7 @@ class MainViewModel(private val getAllRepositories: GetAllRepositories) : ViewMo
 
     fun filter(filter: String) {
         if (filter == "") _repoList.value = repositoryVO
-        else _repoList.value = repositoryVO.filter { it.rep_name.startsWith(filter) }
+        else _repoList.value = repositoryVO.filter { it.rep_name!!.startsWith(filter) }
     }
 
     private fun handleError() {

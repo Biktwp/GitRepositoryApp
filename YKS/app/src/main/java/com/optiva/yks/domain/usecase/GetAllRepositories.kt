@@ -12,7 +12,7 @@ class GetAllRepositories (private val repository: Repository) :
         val result = repository.getRepositoryList()
 
         if (result is Result.Response && params.filter != "") {
-            return Result.Response( result.data.filter { ghDataList -> ghDataList.rep_name.startsWith(params.filter) })
+            return Result.Response( result.data.filter { ghDataList -> ghDataList.rep_name!!.startsWith(params.filter) })
         }
         return result
     }

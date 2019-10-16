@@ -13,8 +13,6 @@ import kotlinx.coroutines.test.resetMain
 import kotlinx.coroutines.test.setMain
 import org.junit.After
 import org.junit.jupiter.api.Assertions.assertTrue
-import org.junit.jupiter.api.assertThrows
-import java.lang.NullPointerException
 
 class GetAllRepositoriesTest {
 
